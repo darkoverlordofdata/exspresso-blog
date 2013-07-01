@@ -15,17 +15,22 @@
 cms = require('exspresso-cms')
 module.exports =
 
-
   #
   # Run ExspressoCMS
   #
   # Set the MODPATH and DOCPATH globals and boot exspresso.
   #
-  # @param [Object] config  sets the expresso paths
   # @return none
   #
-  run: ($config = {}) ->
+  run: () ->
 
-    $config['MODPATH'] = "#{__dirname}/plugins" unless $config['MODPATH']?
+    cms.run
+      MODPATH         : "#{__dirname}/plugins"
+      DOCROOT         : "#{__dirname}/www"
+      site_name       : "Dark Overlord of Data"
+      site_slogan     : "\'Hello Earthling\'"
+      ga_account      : 'UA-41153554-1'
+      ga_domain       : 'darkoverlordofdata.com'
+      logo            : "//d16acdn.aws.af.cm/images/logo.png"
+      log_threshold   : 3
 
-    cms.run $config
